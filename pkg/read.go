@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"fmt"
+	"gocom/util/enDocoder"
 	"gocom/util/tree"
 	"io"
 	"log"
@@ -9,17 +10,27 @@ import (
 	"time"
 )
 
-func Exec() {
-	file, err := os.ReadFile("assets/file.txt")
+func Create(filename string) {
+	file, err := os.ReadFile(filename)
 	if err != nil && err != io.EOF {
 		fmt.Println(err)
 	}
 
 	encodeByte, encodeTree := tree.Encode(file)
 
-	decodedByte := tree.Decode(encodeByte, encodeTree)
+	err = enDocoder.WriteEncodedDataToFile(encodeByte, encodeTree, "assets/file.txt.huff")
+	if err != nil {
+		panic(err)
+	}
+}
 
-	log.Println(string(decodedByte))
+func ExecFile() {
+	bytes, treeData, err := enDocoder.ReadEncodedDataFromFile("assets/file.txt.huff")
+	if err != nil {
+		panic(err)
+	}
+
+	log.Println(tree.Decode(bytes, treeData))
 
 	select {
 	case <-time.After(200 * time.Millisecond):

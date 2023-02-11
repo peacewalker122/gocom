@@ -4,7 +4,6 @@ import (
 	"gocom/entity"
 	"gocom/util/counter"
 	"gocom/util/queue"
-	"log"
 )
 
 func BuildTree(bytes []byte) *entity.Tree {
@@ -64,8 +63,6 @@ func BuildMap(root *entity.Tree) map[byte]string {
 func Encode(bytes []byte) ([]byte, *entity.Tree) {
 	root := BuildTree(bytes)
 	encodingMap := BuildMap(root)
-
-	log.Println(encodingMap)
 
 	var encoded []byte
 	for _, b := range bytes {

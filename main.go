@@ -2,10 +2,9 @@ package main
 
 import (
 	"gocom/cmd"
-	"gocom/pkg"
 )
 
 func main() {
-	pkg.Exec()
+	//pkg.Exec()
 	cmd.Execute()
 }
