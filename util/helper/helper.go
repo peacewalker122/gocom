@@ -16,3 +16,15 @@ func FindFirstInvalidUTF8Index(encodedData []byte) int {
 	}
 	return -1
 }
+
+// search for the first invalid UTF-8 encoded rune
+func FindValidRangeASCIIBinary(endcodedData []byte) (int, int) {
+	for i, b := range endcodedData {
+		if b == 48 || b == 49 {
+			continue
+		} else {
+			return 0, i
+		}
+	}
+	return 0, -1
+}

@@ -11,7 +11,7 @@ import (
 )
 
 func Create(filename string) {
-	file, err := os.ReadFile(filename)
+	file, err := os.ReadFile("assets/file.txt")
 	if err != nil && err != io.EOF {
 		fmt.Println(err)
 	}
@@ -24,13 +24,12 @@ func Create(filename string) {
 	}
 }
 
-func ExecFile() {
+func DecodeFile() {
 	bytes, treeData, err := enDocoder.ReadEncodedDataFromFile("assets/file.txt.huff")
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-
-	log.Println(tree.Decode(bytes, treeData))
+	fmt.Println(tree.Decode(bytes, treeData))
 
 	select {
 	case <-time.After(200 * time.Millisecond):

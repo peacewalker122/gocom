@@ -1,1 +1,20 @@
-lorem ipsum dolor sit amet
+Control Characters
+
+Note the first 32 characters, decimal values 0-31, have been reserved for non-display characters. These are referred to as control characters and were originally intended as machine control signals to trigger events like system sounds (beep), network acknowledgments (ACK), and end of text (EOT).
+Printable Characters
+
+The ASCII-encoded characters for decimal values 0-31 do not print or render to displays like other characters. As such, attempting to use these characters for non-control functions typically results in the display of a default missing character symbol or other unwanted (and irrelevant) characters.
+Modern Expanded ASCII
+
+With the rise of 16, 32, and 64-bit machines, ASCII has seen several significant expansions over the years. The first expansion, called extended ASCII, used an 8-bit representation and extended to the range of 0-255. This range included common symbols and some internationalized versions of the American English alphabet.
+
+This expansion to the original ASCII character codes has evolved in response to the growing need for more sophisticated ways to represent language around the world. After all, we’re a ways past the Internet being limited to a few researchers sending messages around the Southern California area.
+ASCII Chart Uses
+
+Today, ASCII is still used for certain internet mail protocols like SMTP (7-bit ASCII) such that transmitted data is first encoded into 7-bit ASCII, send across the network, and then decoded by the receiving host. This works for all kinds of files, including media!
+Hexadecimal to ASCII
+
+Hexadecimal can represent a wide range of values and is suited for use with modern 64-bit architectures. When converting hex to binary, decimal, or even octal—it can be convenient to have an easy reference to more commonly used values: like 5, 8, or 13. As such, ASCII number charts like the one here are often shown to include hexadecimal values.
+Modern Integrations
+
+Basic text editors like Notepad++ create ASCII text and more advanced programs like Microsoft Word generally have a “save as text” option. In addition, other more advanced encoding sets like UTF and Unicode are considered “supersets” of ASCII and mirror the first 128 characters to the ASCII characters. More than just a tribute; this mapping allows better compatibility across varying programs and programming languages. For example, Python’s ord() built-in function will return the ASCII value of any value character.

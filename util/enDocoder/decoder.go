@@ -2,14 +2,16 @@ package enDocoder
 
 import (
 	"bytes"
-	"encoding/binary"
 	"encoding/xml"
 	"gocom/entity"
+	"gocom/util/helper"
 	"io"
+	"log"
 	"os"
 )
 
 func ReadEncodedDataFromFile(filePath string) ([]byte, *entity.Tree, error) {
+	tree := &entity.Tree{}
 	file, err := os.Open(filePath)
 	if err != nil {
 		return nil, nil, err
@@ -25,11 +27,13 @@ func ReadEncodedDataFromFile(filePath string) ([]byte, *entity.Tree, error) {
 	// Decode the tree from the encoded data
 	buf := bytes.NewBuffer(encodedData)
 	decoder := xml.NewDecoder(buf)
-	tree := &entity.Tree{}
+
 	err = decoder.Decode(tree)
 	if err != nil && err != io.EOF {
 		return nil, nil, err
 	}
 
-	return encodedData[:len(encodedData)-binary.Size(tree)], tree, nil
+	_, endIndex := helper.FindValidRangeASCIIBinary(encodedData)
+	log.Println(endIndex)
+	return encodedData[0:endIndex], tree, nil
 }

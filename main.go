@@ -1,10 +1,8 @@
 package main
 
-import (
-	"gocom/cmd"
-)
+import "gocom/pkg"
 
 func main() {
-	//pkg.Exec()
-	cmd.Execute()
+	pkg.DecodeFile()
+	//cmd.Execute()
 }

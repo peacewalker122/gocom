@@ -10,3 +10,7 @@ type Tree struct {
 func (t Tree) Less(other Tree) bool {
 	return t.Freq < other.Freq
 }
+
+func (t *Tree) String() string {
+	return string(t.Freq)
+}
